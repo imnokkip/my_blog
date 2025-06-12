@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}REIGN | Код, сталь и струны{% endblock %}</title>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <div class="logo">REIGN</div>
+            <div class="tagline">Код. Сталь. Струны и ничего лишнего.</div>
+        </div>
+    </header>
+    
+    <nav>
+        <a href="{% url 'post_list' %}">Главная</a>
+        <a href="{% url 'projects_list' %}">Проекты</a>
+        <a href="{% url 'gallery' %}">Галерея</a>
+        <a href="#">Музыка</a>
+        <a href="#">Прогресс</a>
+        
+    </nav>
+    
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+    
+    <footer>
+        © {% now "Y" %} REIGN. Никаких прав - только сталь и код.
+    </footer>
+    <script>
+        // Открытие модального окна
+        function openModal(imageSrc, title, description) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDesc = document.getElementById('modalDescription');
+            
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+            modalTitle.textContent = title;
+            modalDesc.textContent = description || '';
+            
+            // Блокировка прокрутки фона
+            document.body.style.overflow = "hidden";
+        }
+
+        // Закрытие модального окна
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        // Закрытие при клике вне изображения
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Закрытие по ESC
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.key === "Escape") {
+                closeModal();
+            }
+        };
+    </script>
+</body>
+</html>
