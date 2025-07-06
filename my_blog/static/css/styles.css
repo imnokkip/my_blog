@@ -1,0 +1,662 @@
+:root {
+    --black: #0a0a0a;
+    --red: #b9112d;
+    --gray: #5b5c6e;
+    --light: #edf2f4;
+    --bard: #720618;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+}
+
+body {
+    background-color: var(--black);
+    color: var(--light);
+    line-height: 1.6;
+}
+
+header {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--gray);
+}
+
+.header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('resources/header-bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.55;
+    z-index: 1;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Обновите эти селекторы в вашем CSS */
+.logo {
+    font-size: 3rem;
+    letter-spacing: 2px; /* Увеличенный интервал */
+    color: var(--red);
+    text-transform: uppercase;
+    font-family: 'FluffyFont', 'Courier New', monospace;
+    margin-bottom: 0.5rem;
+}
+
+
+.tagline {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-family: 'FluffyFont', 'Courier New', monospace;
+    letter-spacing: 1px; /* Добавлен интервал */
+    word-spacing: 2px; /* Дополнительный интервал между словами */
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--gray);
+}
+
+nav a {
+    color: var(--light);
+    text-decoration: none;
+    margin: 0 1.5rem;
+    padding: 0.5rem 0;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* Поднимаем чуть выше от общего border */
+    width: 100%;
+    height: 2px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+
+nav a::before {
+    left: 50%;
+}
+
+nav a::after {
+    right: 50%;
+}
+
+nav a:hover {
+    color: var(--red);
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.post {
+    position: relative;
+    margin-bottom: 4rem;
+    padding-left: 20px;
+    border-left: 3px solid #d90429; /* Красная линия слева */
+    display: flex;
+    flex-direction: column;
+    min-height: 300px; /* Минимальная высота блока */
+}
+
+.post-content-wrapper {
+    display: flex;
+    align-items: center; /* Вертикальное центрирование */
+}
+
+.post:before {
+    content: "";
+    position: absolute;
+    left: -3px;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: #d90429;
+}
+
+.post-image-wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.post-image-container {
+    flex: 0 0 200px;
+    margin-right: 30px;
+    display: flex;
+    align-items: center; /* Центрирование изображения */
+    justify-content: center;
+    height: 150px; /* Фиксированная высота контейнера */
+    overflow: hidden;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+}
+
+.post-date {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.post-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem; /* Увеличенный отступ */
+    color: var(--red);
+    font-family: 'FluffyFont', 'Courier New', monospace;
+    letter-spacing: 1.5px; /* Добавлен интервал */
+    line-height: 1.3; /* Увеличенный межстрочный интервал */
+}
+
+.post-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Вертикальное центрирование */
+    flex-grow: 1;
+    padding: 20px 0;
+}
+
+.post-meta {
+    margin-top: 2rem;
+    color: #2b2d42;
+    font-size: 0.9rem;
+    border-top: 1px solid #2b2d42;
+    padding-top: 1rem;
+}
+
+.post-excerpt {
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px; /* Лёгкий интервал для основного текста */
+    line-height: 1.7; /* Увеличенный межстрочный интервал */
+}
+
+.read-more {
+    color: var(--red);
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0.3rem 0;
+    display: inline-block;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--gray);
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.projects-section {
+    padding: 4rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: #d90429;
+    font-family: 'FluffyFont', sans-serif;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.project-card {
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #2b2d42;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.project-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #edf2f4;
+}
+
+.project-description {
+    color: #8d99ae;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.read-more {
+    color: #d90429;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: #ef233c;
+}
+
+.github-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #8d99ae;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.github-link:hover {
+    color: #d90429;
+}
+
+.github-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Gallery Styles */
+.gallery-container {
+    padding: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #d90429;
+    font-family: 'FluffyFont', sans-serif;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    grid-auto-rows: minmax(200px, auto);
+}
+
+.gallery-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1a1a1a;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+}
+
+.gallery-image-container {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+}
+
+.gallery-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.03);
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-zoom {
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.gallery-caption {
+    padding: 1rem;
+}
+
+.gallery-caption h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    color: #edf2f4;
+}
+
+.gallery-caption p {
+    margin: 0;
+    color: #8d99ae;
+    font-size: 0.9rem;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    overflow: auto;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+}
+
+.modal-content-wrapper {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-caption   { 
+     position  :  fixed  ; 
+     bottom  :  20px  ; 
+     left  :  0  ; 
+     width  :  100%  ; 
+     text-align  :  center  ; 
+     color  :  white  ; 
+     padding  :  10px  ; 
+     background-color  :   rgba  (  0  ,  0  ,  0  ,  0.7  )  ; 
+ } 
+
+.close   { 
+     position  :  absolute  ; 
+     top  :  15px  ; 
+     right  :  35px  ; 
+     color  :  white  ; 
+     font-size  :  40px  ; 
+     font-weight  :  bold  ; 
+     cursor  :  pointer  ; 
+     z-index  :  1001  ; 
+ } 
+
+
+.close:hover {
+    color: #d90429;
+}
+
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 16px;
+    user-select: none;
+    transform: translateY(-50%);
+    transition: 0.3s;
+    z-index: 1001;
+}
+
+.nav-arrow:hover {
+    color: #d90429;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.image-counter {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.gallery-image {
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+    transform: scale(1.03);
+}
+
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.music-track {
+    background: #111;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #333;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.music-track:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(200, 0, 0, 0.1);
+    border-color: #500;
+}
+
+.track-cover {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #333;
+}
+
+.track-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.default-cover {
+    color: #ccc;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.track-info {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.track-info h3 {
+    margin: 0 0 5px;
+    color: #eee;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.artist, .duration {
+    margin: 0;
+    color: #777;
+    font-size: 13px;
+}
+
+.audio-player {
+    margin-top: 10px;
+}
+
+audio {
+    width: 100%;
+    height: 30px;
+    filter: sepia(50%) hue-rotate(-10deg) saturate(70%) brightness(0.8);
+}
+
+audio::-webkit-media-controls-panel {
+    background: #222;
+}
+
+.empty-music {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px;
+    color: #555;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2rem;
+    }
+    
+    nav a {
+        margin: 0 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .post {
+        min-height: auto;
+        flex-direction: column;
+        padding-left: 10px;
+    }
+
+    .post-image {
+        max-height: 200px;
+    }
+    
+    .post-image-container {
+        flex: 0 0 auto;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+     .gallery-grid {
+        column-count: 1;
+    }
+}

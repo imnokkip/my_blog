@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="music-container">
+    <h1 class="section-title">Музыка</h1>
+    
+    <div class="music-grid">
+        {% for track in tracks %}
+        <div class="music-track">
+            <div class="track-cover">
+                {% if track.cover_image %}
+                <img src="{{ track.cover_image.url }}" alt="{{ track.title }}">
+                {% else %}
+                <div class="default-cover">REIN</div>
+                {% endif %}
+            </div>
+            
+            <div class="track-info">
+                <h3>{{ track.title }} - {{ track.artist }}</h3>
+                
+                <div class="audio-player">
+                    <audio controls onplay="pauseOthers(this)">
+                        <source src="{{ track.audio_file.url }}" type="audio/mpeg">
+                    </audio>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+function pauseOthers(currentPlayer) {
+    document.querySelectorAll('audio').forEach(player => {
+        if (player !== currentPlayer) player.pause();
+    });
+}
+</script>
+{% endblock %}
